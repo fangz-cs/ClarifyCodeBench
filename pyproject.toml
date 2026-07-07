@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clarifycodebench"
+version = "0.1.0"
+description = "Evaluating LLMs on clarifying ambiguous requirements for code generation."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+keywords = ["llm", "code-generation", "benchmark", "requirements", "clarification"]
+dependencies = [
+    "openai>=1.0.0",
+    "httpx>=0.24.0",
+    "numpy>=1.20.0",
+    "scikit-learn>=1.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/fangz-cs/ClarifyCodeBench"
+Repository = "https://github.com/fangz-cs/ClarifyCodeBench"
+Issues = "https://github.com/fangz-cs/ClarifyCodeBench/issues"
+
+[tool.setuptools.packages.find]
+include = ["clarifycodebench*"]

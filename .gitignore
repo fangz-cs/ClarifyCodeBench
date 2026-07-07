@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# Secrets
+.env
+*.key
+
+# Run outputs / logs (regenerated; do not commit)
+results/
+pass1/
+logs/
+*.log
+nohup.out
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Large third-party data (fetch LiveCodeBench separately; see README)
+data/livecodebench*
+data/test6.jsonl

@@ -1,0 +1,44 @@
+# Model configurations used in the ClarifyCodeBench paper.
+#
+# `id` is the model name as your OpenAI-compatible endpoint exposes it (adjust
+# to match your provider/gateway). `thinking` toggles reasoning mode and
+# `max_tokens` the generation budget. These mirror the paper's Implementation
+# Details: non-reasoning runs capped at 1024 tokens, reasoning runs at 8192;
+# temperature 0 for all evaluated models; judge = gpt-4o (temp 1.0, 3 samples).
+#
+# This file is documentation / a template — the CLI takes plain flags
+# (--model, --thinking, --max-tokens). Copy the values you need.
+
+judge:
+  id: gpt-4o
+  consistency: 3          # majority vote over 3 samples
+  temperature: 1.0
+
+defaults:
+  max_turns: 6
+  temperature: 0.0
+
+models:
+  # --- non-reasoning ---
+  - id: gpt-4o
+    thinking: false
+    max_tokens: 1024
+  - id: claude-sonnet-4.5
+    thinking: false
+    max_tokens: 1024
+  - id: gemini-2.5-flash
+    thinking: false
+    max_tokens: 1024
+  - id: deepseek-v3.2
+    thinking: false
+    max_tokens: 1024
+  - id: qwen3-235b-a22b
+    thinking: false
+    max_tokens: 1024
+  # --- reasoning ("thinking") ---
+  - id: gpt-5
+    thinking: true
+    max_tokens: 8192
+  - id: claude-sonnet-4.5
+    thinking: true
+    max_tokens: 8192
