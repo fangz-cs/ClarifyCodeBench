@@ -1,4 +1,4 @@
-"""ClarifyCodeBench: evaluating LLMs on clarifying ambiguous code requirements.
+"""ClarifyCodeBench: evaluating LLMs on clarifying underspecified code requirements.
 
 Only lightweight, dependency-free modules are imported eagerly so that offline
 analysis (metric computation, response parsing, taxonomy lookup) works without

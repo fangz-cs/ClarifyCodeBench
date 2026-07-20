@@ -1,8 +1,8 @@
 """Interactive evaluation protocol for ClarifyCodeBench.
 
-For each task the evaluated model sees the *ambiguous* requirement and then, at
-each turn, must either ask exactly one clarification question or emit final
-code. When it asks a question, an LLM-as-judge matches it against the annotated
+For each task the evaluated model sees the *underspecified* requirement and
+then, at each turn, must either ask exactly one clarification question or emit
+final code. When it asks a question, an LLM-as-judge matches it against the annotated
 key questions; on a match the model receives the ground-truth answer, otherwise
 a "not relevant" reply. The loop runs until the model emits code or reaches
 ``max_turns``.
@@ -13,7 +13,7 @@ The per-run output record (one JSON object per task, JSONL) is:
       "id": <question_id>,            # LiveCodeBench problem id (for pass@1)
       "task_id": <task_id>,           # ClarifyCodeBench task id
       "key_question_num": <int>,      # K = number of annotated key questions
-      "prompt": <ambiguous requirement>,
+      "prompt": <underspecified requirement>,
       "messages": [{"role","content"}, ...],   # full dialogue
       "response_contents": [<assistant content per turn>, ...],
       "hit_dict": {"0": 1, "1": 0, ...},        # per-turn key-question hit

@@ -4,22 +4,23 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](pyproject.toml)
 
-**Evaluating LLMs on clarifying ambiguous requirements for code generation.**
+**Evaluating LLMs on clarifying underspecified requirements for code generation.**
 
 📄 **Paper:** [arXiv:2607.00711](https://arxiv.org/abs/2607.00711)
 
-Real-world coding requirements are frequently ambiguous, incomplete, or
-underspecified. ClarifyCodeBench is an *interactive* benchmark that measures
-whether an LLM can **detect** ambiguity, **ask** the right clarification
-questions, and **use** the answers to generate correct code — rather than
-silently guessing intent.
+Real-world coding requirements are frequently underspecified: incomplete,
+ambiguous, or silent on details that determine the intended behavior.
+ClarifyCodeBench is an *interactive* benchmark that measures whether an LLM can
+**detect** underspecification, **ask** the right clarification questions, and
+**use** the answers to generate correct code, rather than silently guessing
+intent.
 
 Each of the **419 tasks** provides an underspecified requirement, annotated key
-clarification questions with ground-truth answers, a fine-grained ambiguity
-type, and (via LiveCodeBench) an executable hidden-test suite for the final
-code.
+clarification questions with ground-truth answers, a fine-grained
+underspecification type, and (via LiveCodeBench) an executable hidden-test suite
+for the final code.
 
-<p align="center"><em>Given an ambiguous requirement, the model either asks one
+<p align="center"><em>Given an underspecified requirement, the model either asks one
 clarification question or emits code. A question is matched against the
 annotated key questions by an LLM-as-judge; on a match the model receives the
 ground-truth answer. The loop repeats until the model emits code.</em></p>
@@ -115,7 +116,7 @@ clarifycodebench/          # importable package
   metrics.py               # TKQR, ORA, and aggregation over run outputs
   judge_validation.py      # judge vs TF-IDF agreement (Cohen's kappa)
   functional.py            # prepare code.jsonl for LiveCodeBench pass@1
-  taxonomy.py              # ambiguity type names + definitions
+  taxonomy.py              # underspecification type names + definitions
 scripts/                   # run_eval, compute_metrics, prepare_pass1, validate_judge
 configs/models.yaml        # per-model API params used in the paper
 data/ClarifyCodeBench.jsonl  # the 419-task benchmark (+ data card)
@@ -131,11 +132,11 @@ and `finished`. This feeds both `compute_metrics.py` and `prepare_pass1.py`.
 
 ## Dataset construction
 
-The benchmark is built from LiveCodeBench by **manual, deletion-only ambiguity
-injection**: annotators remove a small amount of the information needed to
-determine intended behavior, then write the key clarification questions,
-ground-truth answers, and ambiguity types. Every task is human-annotated — no
-LLM is used to construct the benchmark. See the [data card](data/README.md).
+The benchmark is built from LiveCodeBench by **manual, deletion-only editing**:
+annotators remove a small amount of the information needed to determine intended
+behavior, then write the key clarification questions, ground-truth answers, and
+underspecification types. Every task is human-annotated. No LLM is used to
+construct the benchmark. See the [data card](data/README.md).
 
 ## Citation
 

@@ -1,9 +1,10 @@
-"""Ambiguity taxonomy for ClarifyCodeBench.
+"""Underspecification taxonomy for ClarifyCodeBench.
 
-Every annotated ambiguity point has exactly one type. A task's ``keywords``
-field is the *deduplicated set* of the types of its points, stored as the
-English type names used in the paper, so ``len(keywords) <= len(qa_pairs)``:
-a task whose two ambiguity points share a type carries a single keyword.
+Every annotated underspecification point has exactly one type. A task's
+``keywords`` field is the *deduplicated set* of the types of its points, stored
+as the English type names used in the paper, so ``len(keywords) <=
+len(qa_pairs)``: a task whose two underspecification points share a type carries
+a single keyword.
 This module documents that taxonomy with a short definition per type and
 provides small helpers to normalize and validate labels.
 
@@ -33,7 +34,7 @@ TYPES: list[str] = list(TYPE_DEFINITIONS)
 
 
 def normalize(keyword: str) -> str:
-    """Normalize an ambiguity keyword (trims surrounding whitespace)."""
+    """Normalize a type keyword (trims surrounding whitespace)."""
     return keyword.strip()
 
 
